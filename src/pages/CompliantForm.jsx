@@ -47,7 +47,7 @@ const Complaint = () => {
       );
       if (image) data.append("image", image);
 
-      const res = await fetch("https://backend-4-6aiu.onrender.com/api/complaints", {
+      const res = await fetch("https://backend-7-b3c2.onrender.com/api/complaints", {
         method: "POST",
         body: data,
       });
