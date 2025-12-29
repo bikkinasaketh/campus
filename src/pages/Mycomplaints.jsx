@@ -12,7 +12,7 @@ const MyComplaints = () => {
 
   const fetchComplaints = async () => {
     const res = await fetch(
-      `https://backend-4-6aiu.onrender.com/api/complaints/user/${userId}`
+      `https://backend-7-b3c2.onrender.com/api/complaints/user/${userId}`
     );
     const data = await res.json();
     setComplaints(data);
