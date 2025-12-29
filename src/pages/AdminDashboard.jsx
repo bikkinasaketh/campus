@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
-    fetch("https://backend-4-6aiu.onrender.com/api/complaints/stats")
+    fetch("https://backend-7-b3c2.onrender.com/api/complaints/stats")
       .then((res) => res.json())
       .then((data) => setStats(data))
       .catch(() => console.log("Failed to load stats"));
