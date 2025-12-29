@@ -64,7 +64,7 @@ const SignUp = () => {
     }
 
     try {
-      const res = await fetch("https://backend-4-6aiu.onrender.com/api/auth/signup", {
+      const res = await fetch("https://backend-7-b3c2.onrender.com/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
