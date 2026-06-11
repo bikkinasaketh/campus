@@ -28,51 +28,49 @@ const Complaint = () => {
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (loading) return;
+  if (loading) return;
 
-    setLoading(true);
+  setLoading(true);
 
-    // 🔥 INSTANT POPUP (button click ventane)
-    toast.info("⏳ Submitting complaint...", {
-      autoClose: 1000,
+  try {
+    const data = new FormData();
+
+    Object.keys(formData).forEach((key) => {
+      data.append(key, formData[key]);
     });
 
-    try {
-      const data = new FormData();
-      Object.keys(formData).forEach((key) =>
-        data.append(key, formData[key])
-      );
-      if (image) data.append("image", image);
-
-      const res = await fetch("https://backend-4-6aiu.onrender.com/api/complaints", {
-        method: "POST",
-        body: data,
-      });
-
-      if (res.ok) {
-        setFormData(initialState);
-        setImage(null);
-
-        // 🔁 Redirect after toast close
-        setTimeout(() => {
-          navigate("/my-complaints");
-        }, 1000);
-      } else {
-        toast.error("❌ Failed to submit complaint", {
-          autoClose: 1000,
-        });
-        setLoading(false);
-      }
-    } catch (error) {
-      toast.error("❌ Server error. Try again.", {
-        autoClose: 1000,
-      });
-      setLoading(false);
+    if (image) {
+      data.append("image", image);
     }
-  };
+
+    const res = await fetch("http://localhost:5000/api/complaints", {
+      method: "POST",
+      body: data,
+    });
+
+    if (res.ok) {
+      toast.success("✅ Complaint Submitted Successfully");
+
+      setFormData(initialState);
+      setImage(null);
+
+      setTimeout(() => {
+        navigate("/my-complaints");
+      }, 1000);
+    } else {
+      toast.error("❌ Failed to submit complaint");
+    }
+  } catch (error) {
+    console.error(error);
+    toast.error("❌ Server Error");
+  } finally {
+    setLoading(false);
+  }
+};
+ 
 
   return (
     <div style={styles.page}>
