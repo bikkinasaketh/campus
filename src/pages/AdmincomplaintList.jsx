@@ -11,7 +11,7 @@ const AdminComplaintList = () => {
 
   const fetchComplaints = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/complaints");
+      const res = await fetch("https://campus-backend-fi6h.vercel.app/api/complaints");
 
       if (!res.ok) {
         throw new Error("Failed to fetch complaints");
@@ -31,7 +31,7 @@ const AdminComplaintList = () => {
   const updateStatus = async (id, status) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/complaints/${id}`,
+        `https://campus-backend-fi6h.vercel.app/api/complaints/${id}`,
         {
           method: "PUT",
           headers: {
@@ -152,7 +152,7 @@ const AdminComplaintList = () => {
 
           {c.image && (
             <img
-              src={`http://localhost:5000/uploads/${c.image}`}
+              src={`https://campus-backend-fi6h.vercel.app/uploads/${c.image}`}
               alt="complaint"
               style={{
                 width: "200px",
