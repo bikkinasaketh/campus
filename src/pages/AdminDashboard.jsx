@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
-    fetch("https://campus-backend-fi6h.vercel.app/api/complaints/stats")
+    fetch("https://backend-7-b3c2.onrender.com/api/complaints/stats")
       .then((res) => res.json())
       .then((data) => setStats(data))
       .catch(() => console.log("Failed to load stats"));
