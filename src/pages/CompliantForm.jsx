@@ -46,7 +46,7 @@ const handleSubmit = async (e) => {
       data.append("image", image);
     }
 
-    const res = await fetch("https://campus-backend-fi6h.vercel.app/api/complaints", {
+    const res = await fetch("https://backend-7-b3c2.onrender.com/api/complaints", {
       method: "POST",
       body: data,
     });
